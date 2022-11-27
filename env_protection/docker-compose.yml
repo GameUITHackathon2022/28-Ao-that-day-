@@ -1,0 +1,179 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: linkho
+      POSTGRES_PASSWORD: linkho
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - spring
+  rabbitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbitmq
+    networks:
+      - spring
+    ports:
+      #Publish port
+      - "5672:5672"
+      #Consume port
+      - "15672:15672"
+
+############Uncommen this part to run the service on docker#################
+#  eureka-server:
+#    image: linkho1905/eureka-server:latest
+#    container_name: eureka-server
+#    ports:
+#      - "8761:8761"
+#    depends_on:
+#      - zipkin
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#  master:
+#    image: linkho1905/master:latest
+#    container_name: master
+#    ports:
+#      - "8085:8085"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#  storage:
+#    image: linkho1905/storage:latest
+#    container_name: storage
+#    ports:
+#      - "8088:8088"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#  authentication:
+#    image: linkho1905/authentication:latest
+#    container_name: authentication
+#    ports:
+#      - "8084:8084"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#  event:
+#    image: linkho1905/event:latest
+#    container_name: event
+#    ports:
+#      - "8086:8086"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - postgres
+#      - rabbitmq
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#
+#  notification:
+#    image: linkho1905/notification:latest
+#    container_name: notification
+#    ports:
+#      - "8082:8082"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - rabbitmq
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#  posting:
+#    image: linkho1905/posting:latest
+#    container_name: posting
+#    ports:
+#      - "8087:8087"
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - eureka-server
+#      - zipkin
+#      - postgres
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#  apigw:
+#    image: linkho1905/apigw:latest
+#    container_name: apigw
+#    ports:
+#      - "8090:8090"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#      - authentication
+#      - event
+#      - master
+#      - notification
+#      - posting
+#      - storage
+#    networks:
+#      - spring
+############Uncommen this part to run the service on docker#################
+
+networks:
+  spring:
+    driver: bridge
+  #Docker will use this network (postgres.) to connect to another container
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

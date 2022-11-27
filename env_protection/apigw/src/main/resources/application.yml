@@ -1,0 +1,41 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: api-gateway
+  zipkin:
+    base-url: http://localhost:9411
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: authentication
+          uri: lb://AUTHENTICATION
+          predicates:
+            - Path=/api/v1/account/**
+        - id: event
+          uri: lb://EVENT
+          predicates:
+            - Path=/api/v1/event/**
+        - id: posting
+          uri: lb://POSTING
+          predicates:
+            - Path=/api/v1/posting/**
+        - id: storage
+          uri: lb://STORAGE
+          predicates:
+            - Path=/api/v1/storage/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
