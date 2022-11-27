@@ -1,0 +1,65 @@
+$my-text-color: rgb(20, 90, 20);
+
+.modal {
+     position: fixed;
+     top: 10px;
+     left: 15%;
+     width: 70%;
+     height: 600px;
+     background: linear-gradient(to right, rgb(232, 239, 232) , rgb(210, 231, 211));
+     z-index: 1000;
+     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+     border-radius: 10px;
+     padding: 20px;
+}
+
+.title {
+     font-weight: bold;
+     font-size: 180%;
+     color:rgb(20, 90, 20);
+}
+
+.thumbnail {
+     font-weight: bold;
+     font-size: 120%;
+}
+
+.time {
+     width: max-content;
+     margin: 20px 0;
+     padding: 10px;
+     border-radius: 10px;
+     background:rgba(121, 199, 121, 0.493);
+     
+}
+
+.location {
+     width: max-content;
+     margin: 20px 0;
+     padding: 10px;
+     border-radius: 10px;
+     background:rgba(183, 199, 121, 0.601);
+}
+
+.attendance {
+     width: max-content;
+     margin: 20px 0;
+     padding: 10px;
+     border-radius: 10px;
+     background:rgba(202, 144, 224, 0.447);
+}
+
+.publisher {
+     width: max-content;
+     margin: 20px 0;
+     padding: 10px;
+     border-radius: 10px;
+     background:rgba(151, 133, 32, 0.447);
+}
+
+.same-line {
+     width: 100%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}

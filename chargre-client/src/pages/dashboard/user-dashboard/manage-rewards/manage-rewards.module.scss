@@ -1,0 +1,22 @@
+$my-text-color: rgb(30, 105, 30);
+
+.title {
+     font-weight: bold;
+     font-size: 150%;
+     color: $my-text-color;
+     line-height: 2;
+}
+
+.grid {
+     display: grid;
+     grid-template-columns: auto auto auto;
+     grid-gap: 30px 10px;
+}
+
+.container {
+     background: transparent;
+     width: 80vw;
+     height: max-content;
+     transform: translate(13vw, 15vh);
+     padding: 0 20px 50px 20px;
+}

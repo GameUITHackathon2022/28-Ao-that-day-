@@ -1,0 +1,33 @@
+.nav {
+     margin: 0px 0px 30px 0;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     height: max-content;
+     padding: 1px 30px;
+     background-color: rgba(35, 133, 56, 0.912);
+     z-index: 1000;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.menu {
+     gap: 50px;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     box-shadow: rgba(86, 10, 10, 0.534) 0px 3px 8px;
+     border-radius: 10px 10px;
+     padding: 10px 20px;
+     cursor: pointer;
+}
+
+.username {
+     font-weight: bold;
+     font-style: italic;
+     color: whitesmoke;
+     cursor: pointer;
+}

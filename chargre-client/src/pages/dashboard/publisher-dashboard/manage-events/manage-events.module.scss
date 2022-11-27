@@ -1,0 +1,15 @@
+.nav {
+     width: max-content;
+     padding: 15px;
+     background: rgb(233, 243, 233);
+     border-radius: 10px;
+     display: flex;
+     justify-content: space-between;
+     gap: 50px;
+     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.active-route {
+     font-weight: bold;
+     color: rgb(18, 101, 65);
+}

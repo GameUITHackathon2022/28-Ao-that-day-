@@ -1,0 +1,20 @@
+.bg {
+     width: 100vw;
+     height: 100vh;
+     background: url("https://images.pexels.com/photos/6331041/pexels-photo-6331041.jpeg?auto=compress&cs=tinysrgb&w=600");
+     background-size: 100% 100%;
+     filter: brightness(50%);
+}
+
+.title {
+     font-weight: bold;
+     font-size: 150%;
+}
+
+.container {
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+}

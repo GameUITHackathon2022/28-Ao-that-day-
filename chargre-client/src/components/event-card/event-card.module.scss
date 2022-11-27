@@ -1,0 +1,33 @@
+$my-text-color: rgb(20, 90, 20);
+
+.card {
+     width: 350px;
+     height: max-content;
+     border-radius: 10px;
+     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+     border-bottom: 3px solid rgb(25, 94, 25);
+     padding: 10px 0;
+}
+
+.image {
+     width: 100%;
+     height: 200px;
+     background-size: 350px 200px;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+}
+
+.content {
+     padding: 20px;
+}
+
+.title {
+     font-weight: bolder;
+     font-size: 150%;
+     color: $my-text-color;
+     line-height: 1;
+}
+
+i, p {
+     margin: 5px 0;
+}
